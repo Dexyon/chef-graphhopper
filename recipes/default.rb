@@ -27,7 +27,7 @@ user node['graphhopper']['uid'] do
    system true
    shell '/sbin/nologin'
    supports :manage_home => true
-   home "/home/#{node['servicemix']['uid']}"
+   home "/home/#{node['graphhopper']['uid']}"
 end
 
 # create application directory and extract archive
@@ -64,7 +64,7 @@ template "#{graphhopper_home}/bin/graphhopper.init" do
 end
 
 link '/etc/init.d/graphhopper' do
-    to "#{graphhopper_home}/bin/servicemix.init"
+    to "#{graphhopper_home}/bin/graphhopper.init"
 end
 
 service 'graphhopper' do
