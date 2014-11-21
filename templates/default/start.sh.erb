@@ -1,7 +1,7 @@
 #!/bin/sh
 GH_HOME="<%= "#{node['graphhopper']['home']}/graphhopper-#{node['graphhopper']['version']}" %>"
 GH_JAR="<%= "#{node['graphhopper']['home']}/graphhopper-#{node['graphhopper']['version']}/graphhopper-web-#{node['graphhopper']['version']}-with-dep.jar" %>"
-GH_MAP="<%= "#node"['graphhopper']['osm']['location']/#node['graphhopper']['osm']['file']%>"
+GH_MAP="<%= "#{node['graphhopper']['osm']['location']}/#{node['graphhopper']['osm']['file']}" %>"
 
 cd $GH_HOME
-java -jar $GH_JAR jetty.resourcebase=webapp jetty.port=7070 config=config-example.properties osmreader.osm=$GH_MAP
+java -jar $GH_JAR jetty.resourcebase=webapp jetty.port=7070 config=config.properties osmreader.osm=$GH_MAP

@@ -43,7 +43,7 @@ end
     group "#{node['graphhopper']['gid']}"
   end
 
-  remote_file "#{graphhopper_home}/graphhopper-web#{version}-with-dep.jar" do
+  remote_file "#{graphhopper_home}/graphhopper-web-#{version}-with-dep.jar" do
     source "#{mirror}/#{version}/graphhopper-web-#{version}-with-dep.jar"
     user "#{node['graphhopper']['uid']}"
     group "#{node['graphhopper']['gid']}"
@@ -64,6 +64,20 @@ template "#{graphhopper_home}/bin/graphhopper.init" do
    mode '0755'
    notifies :restart, 'service[graphhopper]'
 end
+
+# configure the start script
+template "#{graphhopper_home}/start.sh" do
+   source 'start.sh.erb'
+   mode '0755'
+end
+
+# Copy the graphhopper config
+template "#{graphhopper_home}/config.properties" do
+   source 'config.properties.erb'
+   mode '0755'
+end
+
+
 
 link '/etc/init.d/graphhopper' do
     to "#{graphhopper_home}/bin/graphhopper.init"
