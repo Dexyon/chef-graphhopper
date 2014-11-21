@@ -16,6 +16,8 @@
 # limitations under the License.
 #
 
+include_recipe 'java'
+
 mirror = node['graphhopper']['mirror']
 version = node['graphhopper']['version']
 graphhopper_home = "#{node['graphhopper']['home']}/graphhopper-#{version}"
@@ -31,7 +33,7 @@ user node['graphhopper']['uid'] do
 end
 
 # create application directory and extract archive
-unless File.exists?("#{graphhopper_home}/bin/graphhopper")
+#unless File.exists?("#{graphhopper_home}/bin/graphhopper")
   directory graphhopper_home do
     recursive true
   end
@@ -53,7 +55,7 @@ unless File.exists?("#{graphhopper_home}/bin/graphhopper")
   #  group "#{node['graphhopper']['gid']}"
   #  recursive true
   #end
-end
+#end
 
 
 # configure init script
