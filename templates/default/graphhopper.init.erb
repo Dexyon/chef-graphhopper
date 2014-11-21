@@ -9,20 +9,20 @@
 GH_USER="<%= "#{node['graphhopper']['uid']}" %>"
 GH_HOME="<%= "#{node['graphhopper']['home']}/graphhopper-#{node['graphhopper']['version']}" %>"
 GH_SCRIPT="<%= "#{node['graphhopper']['home']}/graphhopper-#{node['graphhopper']['version']}/start.sh" %>"
-#GH_SCRIPT=/opt/graphhopper/start.sh
-SU="su --login $GH_USER --command "
+
+SU="su -s /bin/bash -c "
 GH_PID=`/bin/ps -Alf|/bin/grep java|/bin/grep graphhopper|/bin/grep -v grep|/usr/bin/awk '{print $4}'`
 
 case "$1" in
 start)
-    $SU "$GH_SCRIPT" &
+    $SU "$GH_SCRIPT" "GH_USER" &
     ;;
 stop)
     $SU "kill $GH_PID"
     ;;
 restart)
     $SU "kill $GH_PID"
-    $SU "$GH_SCRIPT" &
+    $SU "$GH_SCRIPT" "GH_USER" &
     ;;
 status)
     if [ -z ${GH_PID} ]

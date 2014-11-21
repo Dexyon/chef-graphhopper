@@ -57,6 +57,12 @@ end
   #end
 #end
 
+directory "#{graphhopper_home}/bin" do
+  owner "#{node['graphhopper']['uid']}"
+  group "#{node['graphhopper']['gid']}"
+  mode '0774'
+  action :create
+end
 
 # configure init script
 template "#{graphhopper_home}/bin/graphhopper.init" do
