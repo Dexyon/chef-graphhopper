@@ -16,7 +16,7 @@
 # limitations under the License.
 #
 
-default['graphhopper']['mirror'] = 'https://repository.apache.org/content/repositories/releases/org/apache'
+default['graphhopper']['mirror'] = 'https://oss.sonatype.org/content/groups/public/com/graphhopper/graphhopper-web'
 default['graphhopper']['version'] = '0.3'
 default['graphhopper']['home'] = '/opt'
 default['graphhopper']['uid'] = 'graphhopper'
