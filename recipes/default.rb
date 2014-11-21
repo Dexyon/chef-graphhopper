@@ -21,7 +21,7 @@ version = node['graphhopper']['version']
 graphhopper_home = "#{node['graphhopper']['home']}/graphhopper-#{version}"
 
 # Create OS user
-user node['servicemix']['uid'] do
+user node['graphhopper']['uid'] do
    comment "Graphhopper service user"
    action :create
    system true
