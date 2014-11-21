@@ -21,3 +21,7 @@ default['graphhopper']['version'] = '0.3'
 default['graphhopper']['home'] = '/opt'
 default['graphhopper']['uid'] = 'graphhopper'
 default['graphhopper']['gid'] = 'graphhopper'
+
+default['graphhopper']['osm']['location'] = '/opt/maps'
+default['graphhopper']['osm']['file'] = 'planet-latest.osm.pbf'
+

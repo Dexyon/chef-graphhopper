@@ -1,0 +1,40 @@
+#!/bin/bash
+# Platform Services for Graphhopper
+#
+# The following two lines are used by the chkconfig command. Change as is
+#  appropriate for your application.  They should remain commented.
+# chkconfig: 2345 20 80
+# description: graphhopper service
+
+GH_USER="<%= "#{node['graphhopper']['uid']}" %>"
+GH_HOME="<%= "#{node['graphhopper']['home']}/graphhopper-#{node['graphhopper']['version']}" %>"
+GH_SCRIPT="<%= "#{node['graphhopper']['home']}/graphhopper-#{node['graphhopper']['version']}/start.sh" %>"
+#GH_SCRIPT=/opt/graphhopper/start.sh
+SU="su --login $GH_USER --command "
+GH_PID=`/bin/ps -Alf|/bin/grep java|/bin/grep graphhopper|/bin/grep -v grep|/usr/bin/awk '{print $4}'`
+
+case "$1" in
+start)
+    $SU "$GH_SCRIPT" &
+    ;;
+stop)
+    $SU "kill $GH_PID"
+    ;;
+restart)
+    $SU "kill $GH_PID"
+    $SU "$GH_SCRIPT" &
+    ;;
+status)
+    if [ -z ${GH_PID} ]
+    then
+        echo "Graphhopper is not running."
+    else
+        echo "Graphhopper (pid $GH_PID) is running..."
+    fi
+    exit $?
+    ;;
+*)
+    echo "Usage: $0 (start|stop|restart|status|help)"
+    ;;
+esac
+

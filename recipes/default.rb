@@ -57,17 +57,17 @@ end
 
 
 # configure init script
-#template "#{servicemix_home}/bin/graphhopper.init" do
-#   source 'graphhopper.init.erb'
-#   mode '0755'
-#   notifies :restart, 'service[graphhopper]'
-#end
+template "#{graphhopper_home}/bin/graphhopper.init" do
+   source 'graphhopper.init.erb'
+   mode '0755'
+   notifies :restart, 'service[graphhopper]'
+end
 
-#link '/etc/init.d/graphhopper' do
-#    to "#{servicemix_home}/bin/servicemix.init"
-#end
+link '/etc/init.d/graphhopper' do
+    to "#{graphhopper_home}/bin/servicemix.init"
+end
 
-#service 'graphhopper' do
-#  supports :restart => true
-#  action [:enable]
-#end
+service 'graphhopper' do
+  supports :restart => true
+  action [:enable]
+end
