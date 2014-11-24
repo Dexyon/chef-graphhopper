@@ -15,14 +15,14 @@ GH_PID=`/bin/ps -Alf|/bin/grep java|/bin/grep graphhopper|/bin/grep -v grep|/usr
 
 case "$1" in
 start)
-    $SU "$GH_SCRIPT" "GH_USER" &
+    $SU "$GH_SCRIPT" "$GH_USER" &
     ;;
 stop)
     $SU "kill $GH_PID"
     ;;
 restart)
     $SU "kill $GH_PID"
-    $SU "$GH_SCRIPT" "GH_USER" &
+    $SU "$GH_SCRIPT" "$$GH_USER" &
     ;;
 status)
     if [ -z ${GH_PID} ]
