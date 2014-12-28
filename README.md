@@ -7,13 +7,11 @@ Requirements
 ------------
 
 #### packages
-- `toaster` - graphhopper needs toaster to brown your bagel.
+- `java` - Installs a Java. Uses OpenJDK by default but supports installation of Oracle's JDK.
 
 Attributes
 ----------
-TODO: List your cookbook attributes here.
 
-e.g.
 #### graphhopper::default
 <table>
   <tr>
@@ -23,19 +21,54 @@ e.g.
     <th>Default</th>
   </tr>
   <tr>
-    <td><tt>['graphhopper']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
+    <td><tt>['graphhopper']['mirror']</tt></td>
+    <td>String</td>
+    <td>The location where to graphhopper is downloaded from.</td>
+    <td><tt>https://oss.sonatype.org/content/groups/public/com/graphhopper/graphhopper-web</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['graphhopper']['version']</tt></td>
+    <td>Integer</td>
+    <td>The version of graphhopper to download</td>
+    <td><tt>0.3</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['graphhopper']['home']</tt></td>
+    <td>String</td>
+    <td>The location where to install graphhopper</td>
+    <td><tt>/opt</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['graphhopper']['uid']</tt></td>
+    <td>String</td>
+    <td>The user which runs the graphhopper instance</td>
+    <td><tt>graphhopper</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['graphhopper']['gid']</tt></td>
+    <td>String</td>
+    <td>The group which runs the graphhopper instance</td>
+    <td><tt>graphhopper</tt></td>
+  </tr>
+  <tr/>
+  <tr>
+    <td><tt>['osm']['location']</tt></td>
+    <td>String</td>
+    <td>The folder location of the OSM maps</td>
+    <td><tt>/opt/osm-maps</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['osm']['file']</tt></td>
+    <td>String</td>
+    <td>The name of the OSM maps file</td>
+    <td><tt>current_map.osm.pbf</tt></td>
   </tr>
 </table>
 
 Usage
 -----
 #### graphhopper::default
-TODO: Write usage instructions for each cookbook.
 
-e.g.
 Just include `graphhopper` in your node's `run_list`:
 
 ```json
